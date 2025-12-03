@@ -1,0 +1,183 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SilentAid – Emergency Contacts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .shell {
+      width: 380px;
+      max-width: 100%;
+      background: #020617;
+      border-radius: 24px;
+      padding: 20px 18px 24px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+    }
+    h1 {
+      margin: 0 0 4px;
+      font-size: 20px;
+    }
+    p {
+      margin: 0 0 14px;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+    .field {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 3px;
+      color: #e5e7eb;
+    }
+    input {
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid #4b5563;
+      background: #020617;
+      color: #f9fafb;
+      font-size: 13px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.5);
+    }
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin: 6px 0 10px;
+      font-size: 12px;
+    }
+    .badge {
+      background: #f97316;
+      color: #111827;
+      border-radius: 999px;
+      padding: 1px 6px;
+      font-size: 10px;
+      margin-left: 6px;
+    }
+    .btn-main {
+      width: 100%;
+      padding: 10px;
+      border-radius: 11px;
+      border: none;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #ecfdf5;
+      font-weight: 600;
+      margin-top: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn-main:hover {
+      filter: brightness(1.1);
+    }
+    .btn-next {
+      width: 100%;
+      padding: 11px;
+      border-radius: 11px;
+      border: none;
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      color: #fff;
+      font-weight: 700;
+      margin-top: 14px;
+      cursor: pointer;
+      font-size: 14px;
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .contacts-list {
+      margin-top: 16px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .contact-item {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #374151;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .contact-phone {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+    .btn-small {
+      border: none;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .btn-danger {
+      background: #b91c1c;
+      color: #fee2e2;
+    }
+    #contactsStatus {
+      margin-top: 6px;
+      font-size: 11px;
+      min-height: 14px;
+    }
+    #contactsEmpty {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body data-page="page3">
+  <div class="shell">
+    <h1>Emergency Contacts</h1>
+    <p>Add people who should be notified when you trigger SOS.</p>
+
+    <form id="contactForm">
+      <div class="field">
+        <label for="contactName">Contact Name</label>
+        <input id="contactName" type="text" placeholder="Mom, Roommate, etc." />
+      </div>
+      <div class="field">
+        <label for="contactPhone">Phone Number</label>
+        <input id="contactPhone" type="tel" placeholder="+91 9XXXXXXXXX" />
+      </div>
+      <div class="row">
+        <input id="contactPrimary" type="checkbox" />
+        <label for="contactPrimary" style="margin:0;">Mark as primary contact</label>
+      </div>
+      <button type="submit" class="btn-main">Add Contact</button>
+    </form>
+    <div id="contactsStatus"></div>
+
+    <div class="contacts-list">
+      <div id="contactsEmpty">No contacts yet. Add at least one for better alerts.</div>
+      <div id="contactsList"></div>
+    </div>
+
+    <!-- ⬇⬇ Changed this: button -> link to new gestures page -->
+    <a id="btnToSOS" href="page4-gestures.html" class="btn-next">
+      Continue to SOS Screen →
+    </a>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

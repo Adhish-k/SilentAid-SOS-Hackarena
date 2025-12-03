@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SilentAid SOS – Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+    }
+    .phone {
+      width: 360px;
+      max-width: 100%;
+      height: 720px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, #ff3b30, #ff6b52);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .title {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .title h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    .title p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .hero {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .hero-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 40px;
+      background: #fff;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff3b30;
+      font-size: 48px;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+      font-size: 12px;
+    }
+    .feature {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .feature span {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .bottom {
+      margin-bottom: 8px;
+    }
+    .btn-primary {
+      width: 100%;
+      padding: 16px;
+      border-radius: 18px;
+      border: none;
+      background: #fff;
+      color: #ff3b30;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+    .subtitle {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body data-page="page1">
+  <div class="phone">
+    <div class="title">
+      <h1>SilentAid SOS</h1>
+      <p>Your personal emergency companion</p>
+    </div>
+
+    <div class="hero">
+      <div class="hero-icon">SOS</div>
+      <div class="features">
+        <div class="feature">
+          <span>📍</span>
+          Live Location
+        </div>
+        <div class="feature">
+          <span>👨‍👩‍👧</span>
+          Emergency Contacts
+        </div>
+        <div class="feature">
+          <span>🚑</span>
+          Quick Help
+        </div>
+        <div class="feature">
+          <span>🔔</span>
+          Smart Alerts
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <button id="btnGetStarted" class="btn-primary">
+        Get Started →
+      </button>
+      <p class="subtitle">Tap to set up your profile and safety circle.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

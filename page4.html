@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SilentAid – SOS Screen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #111827, #1f2937);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      color: #e5e7eb;
+    }
+    .shell {
+      width: 380px;
+      max-width: 100%;
+      background: #020617;
+      border-radius: 26px;
+      padding: 20px 18px 24px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.8);
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .app-name {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #4ade80;
+      font-size: 11px;
+    }
+    .profile {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+    .profile span {
+      display: inline-block;
+      margin-right: 8px;
+    }
+    .location {
+      margin-top: 12px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 12px;
+      border: 1px solid #374151;
+    }
+    .location strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+    .sos-wrapper {
+      margin: 18px 0 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sos-ring {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #f97316, #b91c1c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.2);
+      position: relative;
+    }
+    .sos-progress {
+      position: absolute;
+      bottom: -10px;
+      left: 10%;
+      width: 80%;
+      height: 5px;
+      border-radius: 999px;
+      background: #111827;
+      overflow: hidden;
+    }
+    .sos-progress-inner {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #f97316, #ef4444);
+      transition: width 0.05s linear;
+    }
+    #sosButton {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: none;
+      background: radial-gradient(circle at 30% 0%, #fee2e2, #ef4444);
+      color: #b91c1c;
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(248, 113, 113, 0.6);
+    }
+    #sosButton.holding {
+      background: radial-gradient(circle at 30% 0%, #ffedd5, #fb923c);
+    }
+    #sosButton.sending {
+      background: radial-gradient(circle at 30% 0%, #bbf7d0, #22c55e);
+      color: #14532d;
+    }
+    .hint {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #9ca3af;
+      text-align: center;
+    }
+    .hint span {
+      color: #f97316;
+      font-weight: 600;
+    }
+    #sosStatus {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .contacts-box {
+      margin-top: 16px;
+      padding: 10px;
+      border-radius: 14px;
+      background: #020617;
+      border: 1px solid #374151;
+      font-size: 12px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    .contacts-box h3 {
+      margin: 0 0 6px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+    .contacts-box ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .contacts-box li {
+      margin-bottom: 4px;
+    }
+    #sosSummary {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #bbf7d0;
+    }
+  </style>
+</head>
+<body data-page="page4">
+  <div class="shell">
+    <div class="top">
+      <div>
+        <div class="app-name">SilentAid SOS</div>
+        <div class="pill">Emergency mode ready</div>
+      </div>
+    </div>
+
+    <div class="profile">
+      <span id="sosUserName">-</span> •
+      <span id="sosUserPhone">-</span> •
+      <span>Blood: <span id="sosUserBlood">-</span></span>
+    </div>
+
+    <div class="location">
+      <strong>Current Location</strong>
+      <div id="sosLocationText">Getting location...</div>
+    </div>
+
+    <div class="sos-wrapper">
+      <div class="sos-ring">
+        <button id="sosButton">SOS</button>
+        <div class="sos-progress">
+          <div id="sosProgress" class="sos-progress-inner"></div>
+        </div>
+      </div>
+      <div class="hint">
+        Hold the button for <span>3 seconds</span> to send an alert.
+      </div>
+      <div id="sosStatus">Ready. Hold button for 3 seconds to send SOS.</div>
+      <div id="sosSummary"></div>
+    </div>
+
+    <div class="contacts-box">
+      <h3>Will notify these contacts:</h3>
+      <ul id="sosContactsList"></ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+###############################################
+### HEALTH CHECK
+###############################################
+
+GET http://localhost:5000/
+
+
+###############################################
+### TEST FIRESTORE WRITE (serverTest collection)
+###############################################
+
+POST http://localhost:5000/test-add
+Content-Type: application/json
+
+{}
+
+
+###############################################
+### TEST FIRESTORE READ (serverTest collection)
+###############################################
+
+GET http://localhost:5000/test-get
+
+
+###############################################
+### CREATE SOS ALERT (main endpoint)
+###############################################
+
+POST http://localhost:5000/api/sos
+Content-Type: application/json
+
+{
+  "userName": "Adhish",
+  "phone": "9876543210",
+  "lat": 12.972442,
+  "lng": 77.580643,
+  "emergencyType": "PERSONAL_SAFETY",
+  "subType": "Stalking",
+  "bloodGroup": "O+",
+  "conditions": ["Asthma"],
+  "allergies": ["Dust"]
+}
+
+
+###############################################
+### GET ALL ALERTS
+###############################################
+
+GET http://localhost:5000/api/alerts
+
+
+###############################################
+### GET SINGLE ALERT BY ID
+###############################################
+
+# Replace ALERT_ID manually after running GET /api/alerts
+GET http://localhost:5000/api/alerts/ALERT_ID
